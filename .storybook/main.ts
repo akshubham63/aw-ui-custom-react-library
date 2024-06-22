@@ -13,5 +13,16 @@ const config: StorybookConfig = {
     name: "@storybook/react-vite",
     options: {},
   },
+  async viteFinal(config) {
+    // Extend Vite configuration to handle SCSS
+    config.css = {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@import "src/styles/globals.scss";`
+        }
+      }
+    };
+    return config;
+  },
 };
 export default config;
